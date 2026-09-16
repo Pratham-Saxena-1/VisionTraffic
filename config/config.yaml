@@ -12,7 +12,8 @@ model:
 # Analytics & Regions of Interest
 analytics:
   # The line for counting vehicles [x1, y1, x2, y2]
-  counting_line: [200, 500, 1000, 500]
+  # Drawn horizontally across the road based on the new perspective
+  counting_line: [100, 270, 450, 320]
   # Traffic density thresholds (vehicles per sq meter or just abstract count)
   density_threshold_high: 10
   density_threshold_medium: 5
@@ -21,16 +22,16 @@ analytics:
 regions:
   # ROI for density estimation (in pixel coordinates)
   density_roi: 
-    - [400, 300]
-    - [800, 300]
-    - [1100, 700]
-    - [100, 700]
+    - [192, 224]
+    - [352, 256]
+    - [544, 384]
+    - [64, 288]
   # Lane ROI for restricting Canny edge/Hough transform
   lane_roi:
-    - [100, 700]
-    - [400, 350]
-    - [800, 350]
-    - [1100, 700]
+    - [192, 224]
+    - [352, 256]
+    - [544, 384]
+    - [64, 288]
 
 # Classical CV (RANSAC & Lane Detection)
 ransac:
@@ -49,10 +50,10 @@ hough:
 # 4 points needed for planar homography
 calibration:
   image_points:
-    - [400, 300]   # Top-left
-    - [800, 300]   # Top-right
-    - [1100, 700]  # Bottom-right
-    - [100, 700]   # Bottom-left
+    - [192, 224]   # Top-left
+    - [352, 256]   # Top-right
+    - [544, 384]   # Bottom-right
+    - [64,  288]   # Bottom-left
   # Assuming a rectangular segment of road in the real world
   # (Width=10m, Length=30m for example)
   ground_points:
