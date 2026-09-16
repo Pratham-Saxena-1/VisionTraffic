@@ -1,0 +1,12 @@
+{
+    "counts": {
+        "total": 0,
+        "classes": {}
+    },
+    "density": {
+        "peak_density": 0.0,
+        "average_density": 0.0,
+        "current_density": 0.0
+    },
+    "violations": []
+}

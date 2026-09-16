@@ -1,0 +1,16 @@
+# Python environments
+venv/
+__pycache__/
+*.pyc
+
+# IDEs
+.idea/
+.vscode/
+
+# Project Outputs and Large Files
+outputs/annotated/*.mp4
+yolov8n.pt
+*.log
+
+# Data
+data/sample/*.mp4

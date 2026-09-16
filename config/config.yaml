@@ -1,0 +1,77 @@
+# VisionTraffic Configuration File
+
+# Detection & Tracking Model settings
+model:
+  path: "yolov8n.pt"  # Will be downloaded automatically by Ultralytics
+  confidence_threshold: 0.3
+  iou_threshold: 0.5
+  input_resolution: [640, 640]
+  # COCO classes: 2: car, 3: motorcycle, 5: bus, 7: truck
+  vehicle_classes: [2, 3, 5, 7]
+
+# Analytics & Regions of Interest
+analytics:
+  # The line for counting vehicles [x1, y1, x2, y2]
+  counting_line: [200, 500, 1000, 500]
+  # Traffic density thresholds (vehicles per sq meter or just abstract count)
+  density_threshold_high: 10
+  density_threshold_medium: 5
+
+# Regions of interest (Polygons defined by [x, y] points)
+regions:
+  # ROI for density estimation (in pixel coordinates)
+  density_roi: 
+    - [400, 300]
+    - [800, 300]
+    - [1100, 700]
+    - [100, 700]
+  # Lane ROI for restricting Canny edge/Hough transform
+  lane_roi:
+    - [100, 700]
+    - [400, 350]
+    - [800, 350]
+    - [1100, 700]
+
+# Classical CV (RANSAC & Lane Detection)
+ransac:
+  inlier_threshold: 15.0 # pixels
+  max_iterations: 1000
+  min_points: 2 # A line requires 2 points
+hough:
+  rho: 1
+  theta: 0.01745329251 # pi/180
+  threshold: 50
+  min_line_length: 50
+  max_line_gap: 20
+
+# Geometric Calibration (Direct Linear Transform)
+# Point correspondences: image_points (pixels) <-> ground_points (e.g. meters)
+# 4 points needed for planar homography
+calibration:
+  image_points:
+    - [400, 300]   # Top-left
+    - [800, 300]   # Top-right
+    - [1100, 700]  # Bottom-right
+    - [100, 700]   # Bottom-left
+  # Assuming a rectangular segment of road in the real world
+  # (Width=10m, Length=30m for example)
+  ground_points:
+    - [0, 30]      # Top-left
+    - [10, 30]     # Top-right
+    - [10, 0]      # Bottom-right
+    - [0, 0]       # Bottom-left
+  # Bird's-eye view output dimensions
+  birdseye_resolution: [400, 800] # width, height
+  # Scale to fit ground points into the birdseye image (pixels per meter)
+  birdseye_scale: 20
+  birdseye_offset_x: 100
+  birdseye_offset_y: 100
+
+# File I/O
+paths:
+  output_dir: "outputs"
+  video_output: "outputs/annotated/result.mp4"
+  birdseye_video_output: "outputs/annotated/result_birdseye.mp4"
+  metrics_json: "outputs/metrics/vehicle_statistics.json"
+  metrics_csv: "outputs/metrics/vehicle_statistics.csv"
+  report_txt: "outputs/reports/traffic_report.txt"

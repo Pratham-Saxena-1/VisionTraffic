@@ -1,0 +1,34 @@
+==================================================
+ VisionTraffic: CV Academic Evaluation Report 
+==================================================
+Generated at: 2026-09-16 16:27:28
+
+1. SYSTEM CONFIGURATION
+- Input Resolution: [640, 640]
+- Bird's-Eye Resolution: [400, 800]
+
+2. CV SYLLABUS TRACEABILITY
+| CV Course Topic            | Applied Module / Result                              |
+|----------------------------|------------------------------------------------------|
+| Image Enhancement          | Gaussian blur in src/lane_detector.py                |
+| Edge Detection             | Canny edge detector (lane extraction)                |
+| Hough Transform            | Candidate line structure extraction                  |
+| RANSAC Robust Estimation   | Robust lane line fitting amidst outlier noise        |
+| Homography & DLT           | Ground-plane perspective calibration (DLT SVD logic) |
+| Deep-Learning CV           | YOLOv8 vehicle detection & BoT-SORT tracking         |
+
+3. TRAFFIC ANALYTICS (from pixel geometry)
+- Total Vehicles Counted: 0
+- Class Breakdown:
+
+4. GEOMETRIC ANALYTICS (from ground-plane/rectified geometry)
+- Peak Density (vehicles per area): 0.00
+- Average Density: 0.00
+
+5. DETECTED GEOMETRIC ANOMALIES
+- None detected.
+
+6. LIMITATIONS
+- Epipolar Geometry: True epipolar geometry and depth estimation require a stereo
+  camera pair. This system operates on monocular video and utilizes planar 
+  homography (assuming a flat road) rather than essential/fundamental matrices.
