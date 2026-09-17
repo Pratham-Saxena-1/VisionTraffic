@@ -43,7 +43,7 @@ Traditional traffic monitoring solutions often rely on proprietary sensors or de
 
 | Original Perspective View | Bird's-Eye View (Geometrically Mapped) |
 | :---: | :---: |
-| *(Insert image here)* | *(Insert image here)* |
+| ![Original Perspective View](assets/original_perspective.png) | ![Bird's-Eye View](assets/birds_eye_view.jpg) |
 
 ## 📚 6. Computer Vision Syllabus Traceability
 This project was strictly designed to represent major topics taught in a standard Computer Vision curriculum.
